@@ -12,3 +12,11 @@
 
 # Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
+
+.vscode/
+debug
+*/testdata/*.png
+!*/testdata/*_golden.png
+testdata/*.png
+!testdata/*_golden.png
+*.code-workspace
