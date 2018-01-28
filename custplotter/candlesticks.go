@@ -33,6 +33,8 @@ type Candlesticks struct {
 
 	// CandleWidth is the width of a candlestick
 	CandleWidth vg.Length
+
+	FixedLineColor bool
 }
 
 // NewCandlesticks creates as new candlestick plotter for
@@ -44,11 +46,12 @@ func NewCandlesticks(TOHLCV TOHLCVer) (*Candlesticks, error) {
 	}
 
 	return &Candlesticks{
-		TOHLCVs:     cpy,
-		ColorUp:     color.RGBA{R: 128, G: 192, B: 128, A: 255}, // eye is more sensible to green
-		ColorDown:   color.RGBA{R: 255, G: 128, B: 128, A: 255},
-		LineStyle:   plotter.DefaultLineStyle,
-		CandleWidth: vg.Length(DefaultCandleWidthFactor) * plotter.DefaultLineStyle.Width,
+		TOHLCVs:        cpy,
+		FixedLineColor: true,
+		ColorUp:        color.RGBA{R: 128, G: 192, B: 128, A: 255}, // eye is more sensible to green
+		ColorDown:      color.RGBA{R: 255, G: 128, B: 128, A: 255},
+		LineStyle:      plotter.DefaultLineStyle,
+		CandleWidth:    vg.Length(DefaultCandleWidthFactor) * plotter.DefaultLineStyle.Width,
 	}, nil
 }
 
@@ -65,6 +68,9 @@ func (sticks *Candlesticks) Plot(c draw.Canvas, plt *plot.Plot) {
 			fillColor = sticks.ColorDown
 		}
 
+		if !sticks.FixedLineColor {
+			lineStyle.Color = fillColor
+		}
 		// Transform the data
 		// to the corresponding drawing coordinate.
 		x := trX(TOHLCV.T)
