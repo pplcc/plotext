@@ -34,6 +34,11 @@ type Candlesticks struct {
 	// CandleWidth is the width of a candlestick
 	CandleWidth vg.Length
 
+	// FixedLineColor determines if a fixed line color can be used for up and down bars.
+	// When set to true the color of LineStyle is used to draw the sticks and
+	// the borders of the candle. If set to false then ColorUp or ColorDown are used to
+	// draw the sticks and the borders of the candle. Thus a candle's fill color is also
+	// used for the borders and sticks.
 	FixedLineColor bool
 }
 
