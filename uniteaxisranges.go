@@ -24,6 +24,4 @@ func UniteAxisRanges(axises []*plot.Axis) {
 		axis.Min = min
 		axis.Max = max
 	}
-
-	return
 }
