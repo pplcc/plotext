@@ -6,7 +6,7 @@ package custplotter
 
 import "gonum.org/v1/plot/plotter"
 
-// TOHLCV wraps the Len and TOHLCV methods.
+// TOHLCVer wraps the Len and TOHLCV methods.
 type TOHLCVer interface {
 	// Len returns the number of time, open, high, low, close, volume tuples.
 	Len() int

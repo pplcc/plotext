@@ -20,3 +20,4 @@ debug
 testdata/*.png
 !testdata/*_golden.png
 *.code-workspace
+.idea

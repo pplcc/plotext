@@ -71,7 +71,7 @@ func (bars *VBars) Plot(c draw.Canvas, plt *plot.Plot) {
 		y0 := trY(0)
 		y := trY(TOHLCV.V)
 
-		bar := c.ClipLinesY([]vg.Point{{x, y0}, {x, y}})
+		bar := c.ClipLinesY([]vg.Point{{X: x, Y: y0}, {X: x, Y: y}})
 		c.StrokeLines(lineStyle, bar...)
 
 	}

@@ -73,7 +73,7 @@ func (bars *OHLCBars) Plot(c draw.Canvas, plt *plot.Plot) {
 		yl := trY(TOHLCV.L) // - vg.Length(bars.LineStyle.Width/2.0)
 		yc := trY(TOHLCV.C)
 
-		bar := c.ClipLinesY([]vg.Point{{x, yl}, {x, yh}})
+		bar := c.ClipLinesY([]vg.Point{{X: x, Y: yl}, {X: x, Y: yh}})
 		c.StrokeLines(lineStyle, bar...)
 
 		if c.Contains(vg.Point{X: x, Y: yo}) {
@@ -115,15 +115,15 @@ func (bars *OHLCBars) GlyphBoxes(plt *plot.Plot) []plot.GlyphBox {
 	boxes[0].X = plt.X.Norm(xmin)
 	boxes[0].Y = plt.Y.Norm(ymin)
 	boxes[0].Rectangle = vg.Rectangle{
-		Min: vg.Point{-bars.TickWidth, 0},
-		Max: vg.Point{0, 0},
+		Min: vg.Point{X: -bars.TickWidth, Y: 0},
+		Max: vg.Point{X: 0, Y: 0},
 	}
 
 	boxes[1].X = plt.X.Norm(xmax)
 	boxes[1].Y = plt.Y.Norm(ymax)
 	boxes[1].Rectangle = vg.Rectangle{
-		Min: vg.Point{0, 0},
-		Max: vg.Point{+bars.TickWidth, 0},
+		Min: vg.Point{X: 0, Y: 0},
+		Max: vg.Point{X: +bars.TickWidth, Y: 0},
 	}
 
 	return boxes

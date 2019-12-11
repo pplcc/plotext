@@ -92,13 +92,13 @@ func (tab Table) Align(plots [][]*plot.Plot, dc draw.Canvas) [][]draw.Canvas {
 	o := make([][]draw.Canvas, len(plots))
 
 	if len(plots) != len(tab.RowHeights) {
-		panic(fmt.Errorf("plot: plots rows (%d) != tiles rows (%d)", len(plots), tab.RowHeights))
+		panic(fmt.Sprintf("plot: plots rows (%v) != tiles rows (%v)", len(plots), tab.RowHeights))
 	}
 
 	// Create the initial tiles.
 	for j := 0; j < len(tab.RowHeights); j++ {
 		if len(plots[j]) != len(tab.ColWidths) {
-			panic(fmt.Errorf("plot: plots row %d columns (%d) != tiles columns (%d)", j, len(plots[j]), tab.RowHeights))
+			panic(fmt.Sprintf("plot: plots row %v columns (%v) != tiles columns (%v)", j, len(plots[j]), tab.RowHeights))
 		}
 
 		o[j] = make([]draw.Canvas, len(plots[j]))
